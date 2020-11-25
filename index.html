@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Suzuna Pager</title>
+        <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+        <script src="https://unpkg.com/dayjs@1.8.21/plugin/customParseFormat.js"></script>
+        <!-- <script src="https://unpkg.com/dayjs@1.8.21/plugin/duration.js"></script> -->
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <div class="controller">
+            <b>Options</b>
+            <p>Demo page options coming soon</p>
+            <input id="idate" placeholder="target date" value="2021-06-07">
+            <input id="ifrom" placeholder="countdown from">
+            <input id="ito" placeholder="countdown to" value="0">
+            <button id="place">Place</button>
+        </div>
+        <main>
+            Print sth lol
+        </main>
+        <script>
+            dayjs.extend(window.dayjs_plugin_customParseFormat)
+            // dayjs.extend(window.dayjs_plugin_duration)
+            const $ = document.querySelector.bind(document)
+            
+            const inputDate = $("#idate")
+            const inputFrom = $("#ifrom")
+            const inputTo = $("#ito")
+            const cont = $("main")
+            const tdate = dayjs(inputDate.value, "YYYY-MM-DD")
+
+            inputFrom.value = tdate.diff(dayjs(), 'd')
+
+            function placeContent(now) {
+
+                const fmtdate = now.format("ddd MMM DD YYYY")
+                const cntdown = tdate.diff(now, "d")
+                return `<p>
+                        <span>${fmtdate}</span>
+                        <span style="float: right">NCEE Countdown: ${cntdown}</span>
+                     </p>
+                     <div class="pagebreak"></div>`
+            }
+
+            const err = `<p class="error">Invalid Input</p>`
+            $("#place").onclick = function(){
+                if (!tdate.isValid()) {
+                    cont.innerHTML = err
+                    return
+                }
+                const now = dayjs()
+                // cont.innerHTML = `${date.format("ddd MMM DD YYYY")} ${date.diff(now, "d")}`
+                let html = ``
+                for(let i = inputFrom.value; i >= inputTo.value; i--) {
+                    html += placeContent(tdate.subtract(i, 'day'))
+                }
+                cont.innerHTML = html
+            }
+        </script>
+    </body>
+</html>

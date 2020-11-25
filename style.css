@@ -1,0 +1,23 @@
+@media print {
+    .controller {
+        display: none;
+    }
+
+    .pagebreak {
+        clear: both;
+        page-break-after: always;
+    }
+
+    @page {
+        margin: 0
+    }
+
+    body {
+        margin: 1cm
+    }
+}
+
+.controller {
+    background-color: #eee;
+    margin: 1.5em;
+}
