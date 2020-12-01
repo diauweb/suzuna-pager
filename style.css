@@ -9,15 +9,20 @@
     }
 
     @page {
-        margin: 0
+        margin: .8cm 1.2cm;
     }
 
     body {
-        margin: 1cm
+        margin: 0
     }
 }
 
 .controller {
     background-color: #eee;
     margin: 1.5em;
+}
+
+.par {
+    font-family: 'Jetbrains Mono';
+    font-size: 10pt;
 }

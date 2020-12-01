@@ -11,13 +11,13 @@
         <div class="controller">
             <b>Options</b>
             <p>Demo page options coming soon</p>
-            <input id="idate" placeholder="target date" value="2021-06-07">
+            <input id="idate" placeholder="target date" value="2021-06-06">
             <input id="ifrom" placeholder="countdown from">
             <input id="ito" placeholder="countdown to" value="0">
             <button id="place">Place</button>
         </div>
         <main>
-            Print sth lol
+            Print something here...
         </main>
         <script>
             dayjs.extend(window.dayjs_plugin_customParseFormat)
@@ -34,11 +34,11 @@
 
             function placeContent(now) {
 
-                const fmtdate = now.format("ddd MMM DD YYYY")
+                const fmtdate = now.format("ddd <b>MMM DD</b> YYYY")
                 const cntdown = tdate.diff(now, "d")
-                return `<p>
+                return `<p class="par">
                         <span>${fmtdate}</span>
-                        <span style="float: right">NCEE Countdown: ${cntdown}</span>
+                        <span style="float: right">NCEE Countdown: <b>${cntdown}</b>d</span>
                      </p>
                      <div class="pagebreak"></div>`
             }
